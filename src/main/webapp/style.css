@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+.hintergrund {
+	background-image: url("Bild_Startseite.jpg");
+	
+}
+
+.ueberschriftformat {
+	font-size: 4rem;
+	text-align: center;
+	font-family: monaco;
+	color: rgb(0, 155, 255);
+	text-shadow: 1px 1px 1px black,
+				1px 1px 1px black,
+				0 0 20px white,
+				0 0 20px white,
+				0 0 20px white,
+				0 0 20px white,
+				0 0 20px white,
+				0 0 20px white;
+}

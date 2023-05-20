@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="de"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+  	<title>GhostNetFishingApp</title>
+  	<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+  	<h:outputStylesheet library="webjars" name="primeflex/3.2.0/primeflex.min.css" />
+</h:head>
+<h:body class="hintergrund">
+	<div class="card">
+		<div class="flex flex-row flex-wrap card-container blue-container justify-content-center">
+			<div class="ueberschriftformat">Hier gehts zum Mitgliederbereich</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="flex flex-row flex-wrap card-container blue-container justify-content-center">
+			<p:card style="width: 50rem; margin-top: 3em; margin-bottom: 3em;">
+				<h:form>
+				<p:messages id="msgs"/>
+					<div class="ui-fluid formgrid grid">
+		        		<div class="field col-12 md:col-3">
+		            		<p:outputLabel for="email" value="E-Mail" />
+		            		<p:inputMask id="email" value="#{loginformularController.mitglied.email}">
+		            		<f:event type="jakarta.faces.event.PostValidateEvent" listener="#{loginformularController.postValidateMail}"/>
+			        		</p:inputMask>
+		        		</div>
+		        		<div class="field col-12 md:col-2">
+		        		</div>
+						<div class="field col-12 md:col-3">
+			        		<p:outputLabel for="passwort" value="Passwort" />
+			        		<p:password id="passwort" value="#{loginformularController.mitglied.passwort}" required="true" validator="#{loginformularController.validateLogin}"/>
+		        		</div>
+		        	</div>
+	        		<p:commandButton action="#{loginformularController.login()}" value="Login" update="@form">
+					</p:commandButton>
+				</h:form>
+				<p />
+		        <h:form>
+		        	<p:commandButton action="#{loginformularController.zurueckZurStartseite()}" value="Zurück" update="@form">
+			        </p:commandButton>
+		        </h:form>
+			</p:card>
+		</div>	
+	</div>
+</h:body>
+</html>
+

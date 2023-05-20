@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="de"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+  	<title>GhostNetFishingApp</title>
+  	<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+  	<h:outputStylesheet library="webjars" name="primeflex/3.2.0/primeflex.min.css" />
+</h:head>
+<h:body class="hintergrund">
+	<div class="card">
+		<div class="flex flex-row flex-wrap card-container blue-container justify-content-center">
+			<div class="ueberschriftformat">Willkommen im Mitgliederbereich</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="flex flex-row flex-wrap card-container blue-container justify-content-center">
+			<p:card style="width: 110rem; margin-top: 3em; margin-bottom: 3em;">
+				<div class="ui-fluid formgrid grid">
+					<div class="field col-12 md:col-2">
+						<p:tabMenu activeIndex="#{param.i}" style="width:15rem" orientation="left">
+					        <p:menuitem value="Home" action="#{meineNetzeController.home()}">
+					            <f:param name="i" value="0"/>
+					        </p:menuitem>
+					        <p:menuitem value="Netz bergen" action="#{meineNetzeController.bergen()}">
+					            <f:param name="i" value="1"/>
+					        </p:menuitem>
+					        <p:menuitem value="Meine Netzanmeldungen" action="#{meineNetzeController.netzanmeldungen()}">
+					            <f:param name="i" value="2"/>
+					        </p:menuitem>					       
+					    </p:tabMenu>				  
+		  				<h:form>
+		        			<p:commandButton style="margin-top: 1.25em" action="#{meineNetzeController.zuNetzBearbeiten()}" value="Netz bearbeiten" update="@form">
+			        		</p:commandButton>
+		  				</h:form>				 
+					</div>
+					<div class="field col-12 md:col-9">
+						<div class="card">
+							<div class="flex flex-row flex-wrap card-container blue-container justify-content-center">
+								<div class="card">
+									<div class="field col-12 md:col-12">
+					  					<h2>Hier siehst du alle Geisternetze für die du dich zur Bergung angemeldet hast.</h2>
+					  				</div>
+					  			</div>
+					  			<div class="field col-12 md:col-4">
+					  				<h:form>
+					  					<p:outputLabel style="font-weight: bold" value="Angemeldet als" />
+					            		<p:outputLabel value=": #{meineNetzeController.mitglied.email}"/>
+					  				</h:form>
+					  			</div>									  			
+					  			<div>
+					  				<p:dataTable id="tabelle" var="netz" value="#{meineNetzeController.meineListe}">
+							            <p:column headerText="NetzID">
+							                <h:outputText value="#{netz.netzID}" />
+							            </p:column>
+							            <p:column headerText="Breitengrad">
+							                <h:outputText value="#{netz.breitengrad}" />
+							            </p:column>
+							            <p:column headerText="Längengrad">
+							                <h:outputText value="#{netz.laengengrad}" />
+							            </p:column>
+							            <p:column headerText="Größe in m²">
+							                <h:outputText value="#{netz.groeße}" />
+							            </p:column>
+							            <p:column headerText="aktueller Status">
+							                <h:outputText value="#{netz.status}" />
+							            </p:column>				            
+							        </p:dataTable>
+					  			</div>
+					  		</div>
+				  		</div>	
+				  	</div>
+				</div>	
+			</p:card>
+		</div>
+	</div>
+</h:body>
+</html>
+

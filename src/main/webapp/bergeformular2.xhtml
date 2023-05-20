@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="de"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+  	<title>GhostNetFishingApp</title>
+  	<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+  	<h:outputStylesheet library="webjars" name="primeflex/3.2.0/primeflex.min.css" />
+</h:head>
+<h:body class="hintergrund">
+	<div class="card">
+		<div class="flex flex-row flex-wrap card-container blue-container justify-content-center">
+			<div class="ueberschriftformat">Willkommen im Mitgliederbereich</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="flex flex-row flex-wrap card-container blue-container justify-content-center">
+			<p:card style="width: 110rem; margin-top: 3em; margin-bottom: 3em;">
+				<div class="ui-fluid formgrid grid">
+					<div class="field col-12 md:col-2">
+					    <p> </p>
+					    <h:form>
+		        			<p:commandButton action="#{bergeformularController.zurueckZuHome()}" value="Zurück" update="@form">
+			        		</p:commandButton>
+		        		</h:form>
+					</div>
+					<div class="field col-12 md:col-9">
+						<div class="card">
+							<div class="flex flex-row flex-wrap card-container blue-container justify-content-center">
+								<div>
+					  				<h2>Trag dich hier für eine Bergung ein.</h2>
+					  			</div>
+					  			<div>
+					  				<h:form>
+										<p:messages id="msgs"/>
+										<div class="ui-fluid formgrid grid">
+							        		<div class="field col-12 md:col-3">
+							            		<p:outputLabel for="netzID" value="NetzID" />
+							            		<p:inputMask id="netzID" value="#{bergeformularController.netz.netzID}">
+							            		<p:ajax event="blur" update="breitengrad"/>
+							            		<p:ajax event="blur" update="laengengrad"/>
+							            		<p:ajax event="blur" update="groeße"/>
+							            		</p:inputMask>
+							        		</div>
+							        		<div class="field col-12 md:col-7">
+							        		</div>
+											<div class="field col-12 md:col-3">
+								        		<p:outputLabel style="font-weight: bold" for="breitengrad" value="Breitengrad"/>
+								        		<p:outputLabel id="breitengrad" value=":  #{bergeformularController.netzdaten.breitengrad}"/>
+							        		</div>
+							        		<div class="field col-12 md:col-1">
+							        		</div>
+							        		<div class="field col-12 md:col-3">
+								        		<p:outputLabel style="font-weight: bold" for="laengengrad" value="Längengrad"/>
+								        		<p:outputLabel id="laengengrad" value=":  #{bergeformularController.netzdaten.laengengrad}">
+								        		</p:outputLabel>
+							        		</div>
+							        		<div class="field col-12 md:col-1">
+							        		</div>
+							        		<div class="field col-12 md:col-3">
+								        		<p:outputLabel style="font-weight: bold" for="groeße" value="Größe" />
+								        		<p:outputLabel id="groeße" value=":  #{bergeformularController.netzdaten.groeße}">
+								        		</p:outputLabel>
+							        		</div>
+							        		<div class="field col-12 md:col-1">
+							        		</div>
+							        		<div class="field col-12 md:col-3">
+							            		<p:outputLabel style="font-weight: bold" value="Angemeldet als" />
+							            		<p:outputLabel id="email" value=": #{bergeformularController.mitglied.email}"/>
+							        		</div>
+						        		</div>
+						        		<p:commandButton action="#{bergeformularController.netzUpdate()}" value="Eintragen" update="@form" >
+			        					</p:commandButton>
+									</h:form>
+					  			</div>
+					  		</div>
+				  		</div>	
+				  	</div>
+				</div>	
+			</p:card>
+		</div>
+	</div>
+</h:body>
+</html>
+
